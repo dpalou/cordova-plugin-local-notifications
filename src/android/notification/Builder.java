@@ -118,6 +118,8 @@ public class Builder {
         Uri sound     = options.getSoundUri();
         int smallIcon = options.getSmallIcon();
         int ledColor  = options.getLedColor();
+        String summaryText = options.getSummaryText();
+        java.util.List<String> extendedTextLines = options.getExtendedTextLines();
         NotificationCompat.Builder builder;
 
         builder = new NotificationCompat.Builder(context)
@@ -143,6 +145,16 @@ public class Builder {
         } else {
             builder.setSmallIcon(options.getSmallIcon());
             builder.setLargeIcon(options.getIconBitmap());
+        }
+
+        if(extendedTextLines != null){
+            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle(builder);
+            if(summaryText != null){
+                inboxStyle.setSummaryText(summaryText);
+            }
+            for (String extendedTextLine : extendedTextLines) {
+                inboxStyle.addLine(extendedTextLine);
+            }
         }
 
         applyDeleteReceiver(builder);

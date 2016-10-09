@@ -165,6 +165,33 @@ public class Options {
     }
 
     /**
+     * Summary text for the local notification.
+     */
+    public String getSummaryText() {
+        return options.optString("summary", null);
+    }
+
+    /**
+     * Text to show when notification is "opened" for the local notification.
+     */
+    public java.util.List<String> getExtendedTextLines() {
+        org.json.JSONArray arr;
+        try {
+            arr = options.getJSONArray("extendedTextLines");
+        } catch (JSONException e) {
+            return null;
+        }
+        java.util.List<String> list = new java.util.ArrayList<String>();
+        for(int i = 0; i < arr.length(); i++){
+            try {
+                list.add(arr.getString(i));
+            } catch (JSONException e) {
+            }
+        }
+        return list;
+    }
+
+    /**
      * Repeat interval (day, week, month, year, aso.)
      */
     public long getRepeatInterval() {
