@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-local-notifications-mm",
   "cordova_name": "Cordova LocalNotification Plugin",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Schedules and queries for local notifications",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
